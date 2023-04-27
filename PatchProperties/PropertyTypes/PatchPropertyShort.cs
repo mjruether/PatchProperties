@@ -1,6 +1,8 @@
-﻿namespace PatchProperties.PropertyTypes
+﻿using PatchProperties.PropertyTypes.Contracts;
+
+namespace PatchProperties.PropertyTypes
 {
-    public class PatchPropertyShort
+    public class PatchPropertyShort : IPatchProperty<short>
     {
         public short Value { get; set; }
     }

@@ -1,6 +1,8 @@
-﻿namespace PatchProperties.PropertyTypes
+﻿using PatchProperties.PropertyTypes.Contracts;
+
+namespace PatchProperties.PropertyTypes
 {
-    public class PatchPropertyNullableBool
+    public class PatchPropertyNullableBool : IPatchProperty<bool?>
     {
         public bool? Value { get; set; }
     }

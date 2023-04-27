@@ -1,6 +1,8 @@
-﻿namespace PatchProperties.PropertyTypes
+﻿using PatchProperties.PropertyTypes.Contracts;
+
+namespace PatchProperties.PropertyTypes
 {
-    public class PatchPropertyULong
+    public class PatchPropertyULong : IPatchProperty<ulong>
     {
         public ulong Value { get; set; }
     }

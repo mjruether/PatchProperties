@@ -1,6 +1,8 @@
-﻿namespace PatchProperties.PropertyTypes
+﻿using PatchProperties.PropertyTypes.Contracts;
+
+namespace PatchProperties.PropertyTypes
 {
-    public class PatchPropertyNullableDateTime
+    public class PatchPropertyNullableDateTime : IPatchProperty<DateTime?>
     {
         public DateTime? Value { get; set; }
     }

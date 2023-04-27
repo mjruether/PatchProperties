@@ -1,6 +1,8 @@
-﻿namespace PatchProperties.PropertyTypes
+﻿using PatchProperties.PropertyTypes.Contracts;
+
+namespace PatchProperties.PropertyTypes
 {
-    public class PatchPropertyChar
+    public class PatchPropertyChar : IPatchProperty<char>
     {
         public char Value { get; set; }
     }

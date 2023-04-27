@@ -1,6 +1,8 @@
-﻿namespace PatchProperties.PropertyTypes
+﻿using PatchProperties.PropertyTypes.Contracts;
+
+namespace PatchProperties.PropertyTypes
 {
-    public class PatchPropertyNullableDecimal
+    public class PatchPropertyNullableDecimal : IPatchProperty<decimal?>
     {
         public decimal? Value { get; set; }
     }
