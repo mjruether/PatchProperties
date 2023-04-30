@@ -2,8 +2,10 @@
 
 namespace PatchProperties.UnitTests.Infrastructure.TestPatchModels
 {
-    public class PatchModel
+    public class IntPatchModel
     {
         public PatchPropertyInt? SomeInt { get; set; }
+
+        public PatchPropertyString? MisTypedInt { get; set; }
     }
 }

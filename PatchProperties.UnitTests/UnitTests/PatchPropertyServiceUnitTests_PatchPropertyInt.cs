@@ -5,7 +5,7 @@ using PatchProperties.UnitTests.Infrastructure.TestPatchModels;
 namespace PatchProperties.UnitTests
 {
     [TestClass]
-    public class PatchPropertyServiceUnitTests
+    public class PatchPropertyServiceUnitTests_PatchPropertyTypeMismatch
     {
         [TestMethod]
         public void CanPatchInt()
@@ -16,7 +16,7 @@ namespace PatchProperties.UnitTests
 
             var entityToUpdate = new PatchableEntity();
             
-            var patchModel = new PatchModel()
+            var patchModel = new IntPatchModel()
             {
                 SomeInt = new PatchPropertyInt()
                 {

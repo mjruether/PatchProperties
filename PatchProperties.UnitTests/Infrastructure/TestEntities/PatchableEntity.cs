@@ -3,5 +3,7 @@
     public class PatchableEntity
     {
         public int SomeInt { get; set; }
+
+        public int MisTypedInt { get; set; }
     }
 }
