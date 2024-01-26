@@ -1,10 +1,18 @@
 ﻿using PatchProperties.Domain.Responses;
+using PatchProperties.Extensions;
+using System.Reflection;
 
 namespace PatchProperties
 {
     public class PatchPropertyService
     {
-        public bool IgnoreUnmatchedProperties = false;
+        private readonly NullabilityInfoContext _nullabilityContext = new NullabilityInfoContext();
+
+        public bool IgnoreUnmatchedProperties { get; set; } = false;
+
+        public PatchPropertyService()
+        {
+        }
 
         public SetValuesResponse<E> SetValues<E, I>(E patchableEntity, I patchModel) where E : class
         {
@@ -50,7 +58,20 @@ namespace PatchProperties
                         // Set the patchableEntityProperty with the value from patchModelProperty
                         try
                         {
-                            var typedValue = Convert.ChangeType(value, patchableEntityProperty.PropertyType);
+                            if (value == null)
+                            {
+                                var nullabilityInfo = _nullabilityContext.Create(patchPropertyPropertyInfo);
+                                if (nullabilityInfo.WriteState is not NullabilityState.Nullable)
+                                {
+                                    var warningMessage = $"{patchModelProperty.Name} contained a a null value, which could not be set on {patchPropertyTypeGeneric.Name} property.";
+                                    warnings.Add(patchModelProperty.Name, warningMessage);
+                                    continue;
+                                }
+
+                                patchableEntityProperty.SetValue(patchableEntity, null);
+                                continue;
+                            }
+                            var typedValue = patchableEntityProperty.PropertyType.ChangeValueType(value);
 
                             patchableEntityProperty.SetValue(patchableEntity, typedValue);
                         }

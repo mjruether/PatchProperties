@@ -6,6 +6,8 @@ namespace PatchProperties.UnitTests.Infrastructure.TestPatchModels
     {
         public PatchPropertyInt? SomeInt { get; set; }
 
+        public PatchPropertyNullableInt? SomeNullableInt { get; set; }
+
         public PatchPropertyString? MisTypedInt { get; set; }
     }
 }

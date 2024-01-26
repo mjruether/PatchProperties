@@ -5,7 +5,7 @@ using PatchProperties.UnitTests.Infrastructure.TestPatchModels;
 namespace PatchProperties.UnitTests
 {
     [TestClass]
-    public class PatchPropertyBasicExampleUnitTests_PatchPropertyInt
+    public class PatchPropertyManualExampleUnitTests_PatchPropertyInt
     {
         /// <summary>
         /// Demonstrates how to use the set of Patch Property classes to apply updates in an effiecient manner.
