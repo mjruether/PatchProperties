@@ -39,10 +39,9 @@ namespace PatchProperties
                     var patchPropertyTypeGeneric = patchPropertyTypeInterface.GenericTypeArguments[0];
 
                     var patchPropertyPropertyInfo = patchProperty.GetType().GetProperty("Value");
-#pragma warning disable CS8602 // Dereference of a possibly null reference.
-                    // The prior checkl for this property implementing IPatchProperty guarantees that the "Value" property will exist
-                    var value = patchPropertyPropertyInfo.GetValue(patchProperty);
-#pragma warning restore CS8602 // Dereference of a possibly null reference.
+
+                    // The prior check for this property implementing IPatchProperty guarantees that the "Value" property will exist
+                    var value = patchPropertyPropertyInfo!.GetValue(patchProperty);
 
                     // Find if the patchable entity has a property with the same name
                     var patchableEntityProperty = patchableEntity.GetType().GetProperty(patchModelProperty.Name);

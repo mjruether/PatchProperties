@@ -4,6 +4,6 @@ namespace PatchProperties.UnitTests.Infrastructure.TestPatchModels
 {
     public class MisNamedPatchModel
     {
-        public PatchPropertyInt? MisNameInt { get; set; }
+        public PatchPropertyInt? MisNamedInt { get; set; }
     }
 }

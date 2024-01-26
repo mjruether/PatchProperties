@@ -5,30 +5,29 @@ using PatchProperties.UnitTests.Infrastructure.TestPatchModels;
 namespace PatchProperties.UnitTests
 {
     [TestClass]
-    public class PatchPropertyServiceUnitTests_PatchPropertyInt
+    public class PatchPropertyServiceUnitTests_PatchPropertyNameMismatch
     {
         [TestMethod]
-        public void CanPatchInt()
+        public void CannotPatchMisMatchedName()
         {
             var service = new PatchPropertyService();
 
             int newValue = 1;
 
             var entityToUpdate = new PatchableEntity();
-            
-            var patchModel = new IntPatchModel()
+
+            var patchModel = new MisNamedPatchModel()
             {
-                SomeInt = new PatchPropertyInt()
+                MisNamedInt = new PatchPropertyInt()
                 {
                     Value = newValue
                 }
             };
 
-            Assert.AreNotEqual(newValue, entityToUpdate.SomeInt);
+            var respone = service.SetValues(entityToUpdate, patchModel);
 
-            service.SetValues(entityToUpdate, patchModel);
-
-            Assert.AreEqual(newValue, entityToUpdate.SomeInt);
+            Assert.AreEqual(1, respone.Warnings.Count);
+            Assert.IsTrue(respone.Warnings.ContainsKey("MisNamedInt"));
         }
     }
 }
